@@ -14,8 +14,8 @@
             label="Delete"
             icon="pi pi-trash"
             class="p-button-danger"
-            @click="confirmDeleteSelected"
-            :disabled="!selectedTutorials || !selectedTutorials.length"
+            @click="deleteSelectedTutorials"
+            :disabled="!selectedWorkers || !selectedWorkers.length"
           />
         </template>
         <template #end>
@@ -30,15 +30,15 @@
       <!-- Data Table -->
       <pv-data-table
         ref="dt"
-        :value="tutorials"
-        v-model:selection="selectedTutorials"
+        :value="workers"
+        v-model:selection="selectedWorkers"
         dataKey="id"
         :paginator="true"
         :rows="10"
         :filters="filters"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         :rowsPerPageOptions="[5, 10, 25]"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} tutorials"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} workers"
         responsiveLayout="scroll"
       >
         <template #header>
@@ -95,12 +95,12 @@
             <pv-button
               icon="pi pi-pencil"
               class="p-button-text p-button-rounded"
-              @click="editTutorial(slotProps.data)"
+              @click="editWorker(slotProps.data)"
             />
             <pv-button
               icon="pi pi-trash"
               class="p-button-text p-button-rounded"
-              @click="confirmDeleteTutorial(slotProps.data)"
+              @click="deleteWorker(slotProps.data)"
             />
           </template>
         </pv-column>
@@ -109,7 +109,7 @@
 
     <!-- New/Edit Dialog -->
     <pv-dialog
-      v-model:visible="tutorialDialog"
+      v-model:visible="workerDialog"
       :style="{ width: '450px' }"
       header="Tutorial Information"
       :modal="true"
@@ -120,13 +120,13 @@
           <pv-input-text
             type="text"
             id="name"
-            v-model.trim="tutorial.name"
+            v-model.trim="worker.name"
             required="true"
             autofocus
-            class="{'p-invalid': submitted && !tutorial.name}"
+            class="{'p-invalid': submitted && !worker.name}"
           />
           <label for="name">Name</label>
-          <small class="p-error" v-if="submitted && !tutorial.name"
+          <small class="p-error" v-if="submitted && !worker.name"
             >Name is required</small
           >
         </span>
@@ -136,13 +136,13 @@
           <pv-input-text
             type="lastName"
             id="lastName"
-            v-model.trim="tutorial.lastName"
+            v-model.trim="worker.lastName"
             required="true"
             autofocus
-            class="{'p-invalid': submitted && !tutorial.lastName}"
+            class="{'p-invalid': submitted && !worker.lastName}"
           />
           <label for="title">Last Name</label>
-          <small class="p-error" v-if="submitted && !tutorial.lastName"
+          <small class="p-error" v-if="submitted && !worker.lastName"
             >Last Name is required</small
           >
         </span>
@@ -152,13 +152,13 @@
           <pv-input-text
             type="text"
             id="dni"
-            v-model.trim="tutorial.dni"
+            v-model.trim="worker.dni"
             required="true"
             autofocus
-            class="{'p-invalid': submitted && !tutorial.dni}"
+            class="{'p-invalid': submitted && !worker.dni}"
           />
           <label for="dni">DNI</label>
-          <small class="p-error" v-if="submitted && !tutorial.dni"
+          <small class="p-error" v-if="submitted && !worker.dni"
             >DNI is required</small
           >
         </span>
@@ -168,13 +168,13 @@
           <pv-input-text
             type="text"
             id="phone"
-            v-model.trim="tutorial.phone"
+            v-model.trim="worker.phone"
             required="true"
             autofocus
-            class="{'p-invalid': submitted && !tutorial.phone}"
+            class="{'p-invalid': submitted && !worker.phone}"
           />
           <label for="phone">Phone</label>
-          <small class="p-error" v-if="submitted && !tutorial.phone"
+          <small class="p-error" v-if="submitted && !worker.phone"
             >Phone is required</small
           >
         </span>
@@ -184,13 +184,13 @@
           <pv-input-text
             type="text"
             id="email"
-            v-model.trim="tutorial.email"
+            v-model.trim="worker.email"
             required="true"
             autofocus
-            class="{'p-invalid': submitted && !tutorial.email}"
+            class="{'p-invalid': submitted && !worker.email}"
           />
           <label for="email">Email</label>
-          <small class="p-error" v-if="submitted && !tutorial.email"
+          <small class="p-error" v-if="submitted && !worker.email"
             >Email is required</small
           >
         </span>
@@ -206,51 +206,22 @@
           :label="'Save'.toUpperCase()"
           icon="pi pi-check"
           class="p-button-text"
-          @click="saveTutorial"
-        />
-      </template>
-    </pv-dialog>
-    <!-- Delete confirmation dialog -->
-    <pv-dialog
-      v-model:visible="deleteTutorialDialog"
-      :style="{ width: '450px' }"
-      header="Confirm"
-      :modal="true"
-    >
-      <div class="confirmation-content">
-        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
-        <span v-if="tutorial">
-          Area you sure you want to delete <b>{{ tutorial.title }}</b
-          >?
-        </span>
-      </div>
-      <template #footer>
-        <pv-button
-          :label="'No'.toUpperCase()"
-          icon="pi pi-times"
-          class="p-button-text"
-          @click="deleteTutorialDialog = false"
-        />
-        <pv-button
-          :label="'Yes'.toUpperCase()"
-          icon="pi pi-check"
-          class="p-button-text"
-          @click="deleteTutorial"
+          @click="saveWorker"
         />
       </template>
     </pv-dialog>
 
     <!-- Delete Selected Tutorials Confirmation Dialog -->
     <pv-dialog
-      v-model:visible="deleteTutorialsDialog"
+      v-model:visible="deleteWorkerDialog"
       :style="{ width: '450px' }"
       header="Confirm"
       :modal="true"
     >
       <div class="confirmation-content">
         <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
-        <span v-if="tutorial">
-          Are you sure you want to delete the selected tutorials?
+        <span v-if="worker">
+          Are you sure you want to delete the selected workers?
         </span>
       </div>
       <template #footer>
@@ -258,7 +229,7 @@
           :label="'No'.toUpperCase()"
           icon="pi pi-times"
           class="p-button-text"
-          @click="deleteTutorialsDialog = false"
+          @click="deleteWorkerDialog = false"
         />
         <pv-button
           :label="'Yes'.toUpperCase()"
@@ -273,34 +244,38 @@
 
 <script>
 import { FilterMatchMode } from "primevue/api";
-import { TutorialsApiService } from "@/services/workers-api.service";
+import { WorkersApiService } from "@/services/workers-api.service";
 
 export default {
-  name: "tutorial-list.component",
+  name: "worker-list.component",
   data() {
     return {
-      tutorials: [],
-      tutorialDialog: false,
-      deleteTutorialDialog: false,
-      deleteTutorialsDialog: false,
-      tutorial: {},
-      selectedTutorials: null,
+      workers: [],
+      workerDialog: false,
+      deleteWorkerDialog: false,
+      deleteWorkerDialog: false,
+      worker: {},
+      selectedWorkers: null,
       filters: {},
       submitted: false,
       statuses: [
         { label: "Published", value: "published" },
         { label: "Unpublished", value: "unpublished" },
       ],
-      tutorialsService: null,
+      workersService: null,
     };
   },
   created() {
-    this.tutorialsService = new TutorialsApiService();
-    this.tutorialsService.getAll().then((response) => {
-      this.tutorials = response.data;
-      console.log(this.tutorials);
-      console.log(this.tutorials);
-    });
+    this.workersService = new WorkersApiService();
+    this.workersService
+      .getAll()
+      .then((res) => {
+        console.log("Getting all workers successful");
+        this.workers = res.data;
+      })
+      .catch((err) => {
+        console.log("Something went while get workers: " + err);
+      });
     this.initFilters();
   },
 
@@ -312,106 +287,103 @@ export default {
     },
 
     openNew() {
-      this.tutorial = {};
+      this.worker = {};
       this.submitted = false;
-      this.tutorialDialog = true;
+      this.workerDialog = true;
     },
 
     hideDialog() {
-      this.tutorialDialog = false;
+      this.workerDialog = false;
       this.submitted = false;
     },
 
     findIndexById(id) {
       console.log(`current id: ${id}`);
-      return this.tutorials.findIndex((tutorial) => tutorial.id === id);
+      return this.workers.findIndex((worker) => worker.id === id);
     },
 
-    saveTutorial() {
+    saveWorker() {
       this.submitted = true;
-      if (this.tutorial.name.trim()) {
-        if (this.tutorial.id) {
-          console.log(this.tutorial);
-          this.tutorial = this.getStorableTutorial(this.tutorial);
-          this.tutorialsService
-            .update(this.tutorial.id, this.tutorial)
-            .then((response) => {
-              console.log(response.data.id);
-              this.tutorials[this.findIndexById(response.data.id)] =
-                this.getDisplayableTutorial(response.data);
-              this.$toast.add({
-                severity: "success",
-                summary: "Successful",
-                detail: "Tutorial Updated",
-                life: 3000,
+      if (this.worker.name.trim()) {
+        if (this.worker.id) {
+          this.workersService
+            .update(this.worker.id, this.worker)
+            .then((res) => {
+              console.log("worker updated successful.");
+              let newData = [];
+              this.workers.forEach((element) => {
+                if (element.id === res.data.id) {
+                  newData.push(res.data);
+                } else {
+                  newData.push(element);
+                }
               });
-              console.log(response);
+              this.workers = newData;
+            })
+            .catch((err) => {
+              console.log("Something went while updating worker.");
             });
         } else {
-          this.tutorial.id = 0;
-          console.log(this.tutorial);
-          this.tutorial = this.getStorableTutorial(this.tutorial);
-          this.tutorialsService.create(this.tutorial).then((response) => {
-            this.tutorials.push(this.tutorial);
-            this.$toast.add({
-              severity: "success",
-              summary: "Successful",
-              detail: "Tutorial Created",
-              life: 3000,
+          this.workersService = new WorkersApiService();
+          this.workersService
+            .create(this.worker)
+            .then((res) => {
+              console.log("New wordek added successful.");
+              this.workers.push(res.data);
+            })
+            .catch((err) => {
+              console.log("Something whent while added new worker.");
             });
-            console.log(response);
-          });
         }
-        this.tutorialDialog = false;
-        this.tutorial = {};
+        this.workerDialog = false;
+        this.worker = {};
       }
     },
 
-    editTutorial(tutorial) {
-      console.log(tutorial);
-      this.tutorial = { ...tutorial };
-      console.log(this.tutorial);
-      this.tutorialDialog = true;
+    editWorker(worker) {
+      console.log(worker);
+      this.worker = { ...worker };
+      console.log(this.worker);
+      this.workerDialog = true;
     },
 
-    confirmDeleteTutorial(tutorial) {
-      this.tutorial = tutorial;
-      this.deleteTutorialDialog = true;
-    },
-
-    deleteTutorial() {
-      this.tutorialsService.delete(this.tutorial.id).then((response) => {
-        this.tutorials.filter((t) => t.id !== this.tutorial.id);
-        this.deleteTutorialDialog = false;
-        this.tutorial = {};
-        this.$toast.add({
-          severity: "success",
-          summary: "Successful",
-          detail: "Tutorial Deleted",
-          life: 3000,
+    deleteWorker(worker) {
+      this.workersService = new WorkersApiService();
+      this.workersService
+        .delete(worker.id)
+        .then(() => {
+          console.log("Deleted worker successfull.");
+          let newData = this.workers.filter(
+            (element) => element.id !== worker.id
+          );
+          this.workers = newData;
+        })
+        .catch((err) => {
+          console.log("Something went while deleting worker.");
         });
-        console.log(response);
-      });
     },
 
     exportToCSV() {
       this.$refs.dt.exportToCSV();
     },
 
-    confirmDeleteSelected() {
-      this.deleteTutorialsDialog = true;
-    },
-
     deleteSelectedTutorials() {
-      this.selectedTutorials.forEach((tutorial) => {
-        this.tutorialsService.delete(tutorial.id).then((response) => {
-          this.tutorials = this.tutorials.filter(
-            (t) => t.id !== this.tutorial.id
-          );
-          console.log(response);
-        });
+      console.log(this.selectedWorkers);
+      this.selectedWorkers.forEach((worker) => {
+        this.workersService
+          .delete(worker.id)
+          .then((res) => {
+            this.workers = this.workers.filter(
+              (element) => element.id !== worker.id
+            );
+            console.log(`Worker with id ${worker.id} deleted.`);
+          })
+          .catch((err) => {
+            console.log(
+              `Something went while deleting worker with id ${worker.id}.`
+            );
+          });
       });
-      this.deleteTutorialsDialog = false;
     },
 
     initFilters() {

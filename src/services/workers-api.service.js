@@ -1,6 +1,6 @@
 import http from './http-common';
 
-export class TutorialsApiService {
+export class WorkersApiService {
     getAll() {
         return http.get('/workers');
     }
