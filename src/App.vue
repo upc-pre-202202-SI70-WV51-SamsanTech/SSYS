@@ -1,9 +1,10 @@
 <script setup>
+import Workers from './pages/auth/workers.vue';
 
 </script>
 
 <template>
-  <h1>FRONT END</h1>
+  <Workers></Workers>
 </template>
 
 <style scoped>
