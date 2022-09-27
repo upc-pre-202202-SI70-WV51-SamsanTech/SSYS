@@ -106,12 +106,174 @@
         </pv-column>
       </pv-data-table>
     </div>
+
+    <!-- New/Edit Dialog -->
+    <pv-dialog
+      v-model:visible="tutorialDialog"
+      :style="{ width: '450px' }"
+      header="Tutorial Information"
+      :modal="true"
+      class="p-fluid"
+    >
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+            type="text"
+            id="name"
+            v-model.trim="tutorial.name"
+            required="true"
+            autofocus
+            class="{'p-invalid': submitted && !tutorial.name}"
+          />
+          <label for="name">Name</label>
+          <small class="p-error" v-if="submitted && !tutorial.name"
+            >Name is required</small
+          >
+        </span>
+      </div>
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+            type="lastName"
+            id="lastName"
+            v-model.trim="tutorial.lastName"
+            required="true"
+            autofocus
+            class="{'p-invalid': submitted && !tutorial.lastName}"
+          />
+          <label for="title">Last Name</label>
+          <small class="p-error" v-if="submitted && !tutorial.lastName"
+            >Last Name is required</small
+          >
+        </span>
+      </div>
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+            type="text"
+            id="dni"
+            v-model.trim="tutorial.dni"
+            required="true"
+            autofocus
+            class="{'p-invalid': submitted && !tutorial.dni}"
+          />
+          <label for="dni">DNI</label>
+          <small class="p-error" v-if="submitted && !tutorial.dni"
+            >DNI is required</small
+          >
+        </span>
+      </div>
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+            type="text"
+            id="phone"
+            v-model.trim="tutorial.phone"
+            required="true"
+            autofocus
+            class="{'p-invalid': submitted && !tutorial.phone}"
+          />
+          <label for="phone">Phone</label>
+          <small class="p-error" v-if="submitted && !tutorial.phone"
+            >Phone is required</small
+          >
+        </span>
+      </div>
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+            type="text"
+            id="email"
+            v-model.trim="tutorial.email"
+            required="true"
+            autofocus
+            class="{'p-invalid': submitted && !tutorial.email}"
+          />
+          <label for="email">Email</label>
+          <small class="p-error" v-if="submitted && !tutorial.email"
+            >Email is required</small
+          >
+        </span>
+      </div>
+      <template #footer>
+        <pv-button
+          :label="'Cancel'.toUpperCase()"
+          icon="pi pi-times"
+          class="p-button-text"
+          @click="hideDialog"
+        />
+        <pv-button
+          :label="'Save'.toUpperCase()"
+          icon="pi pi-check"
+          class="p-button-text"
+          @click="saveTutorial"
+        />
+      </template>
+    </pv-dialog>
+    <!-- Delete confirmation dialog -->
+    <pv-dialog
+      v-model:visible="deleteTutorialDialog"
+      :style="{ width: '450px' }"
+      header="Confirm"
+      :modal="true"
+    >
+      <div class="confirmation-content">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+        <span v-if="tutorial">
+          Area you sure you want to delete <b>{{ tutorial.title }}</b
+          >?
+        </span>
+      </div>
+      <template #footer>
+        <pv-button
+          :label="'No'.toUpperCase()"
+          icon="pi pi-times"
+          class="p-button-text"
+          @click="deleteTutorialDialog = false"
+        />
+        <pv-button
+          :label="'Yes'.toUpperCase()"
+          icon="pi pi-check"
+          class="p-button-text"
+          @click="deleteTutorial"
+        />
+      </template>
+    </pv-dialog>
+
+    <!-- Delete Selected Tutorials Confirmation Dialog -->
+    <pv-dialog
+      v-model:visible="deleteTutorialsDialog"
+      :style="{ width: '450px' }"
+      header="Confirm"
+      :modal="true"
+    >
+      <div class="confirmation-content">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+        <span v-if="tutorial">
+          Are you sure you want to delete the selected tutorials?
+        </span>
+      </div>
+      <template #footer>
+        <pv-button
+          :label="'No'.toUpperCase()"
+          icon="pi pi-times"
+          class="p-button-text"
+          @click="deleteTutorialsDialog = false"
+        />
+        <pv-button
+          :label="'Yes'.toUpperCase()"
+          icon="pi pi-check"
+          class="p-button-text"
+          @click="deleteSelectedTutorials"
+        />
+      </template>
+    </pv-dialog>
   </div>
 </template>
 
 <script>
 import { FilterMatchMode } from "primevue/api";
-import { TutorialsApiService } from "@/services/tutorials-api.service";
+import { TutorialsApiService } from "@/services/workers-api.service";
 
 export default {
   name: "tutorial-list.component",
@@ -143,7 +305,6 @@ export default {
   },
 
   methods: {
-
     getStorableTutorial(displayableTutorial) {
       return {
         id: displayableTutorial.id,
