@@ -34,8 +34,10 @@ import Toast from "primevue/toast";
 import Dropdown from "primevue/dropdown";
 import Card from "primevue/card";
 import Tag from "primevue/tag";
+import router from "./router";
 
 createApp(App)
+    .use(router)
     .use(createPinia())
     .use(PrimeVue, { ripple: true })
     .use(ToastService)
