@@ -2,7 +2,7 @@
   "workers": [
     {
       "id": 1,
-      "name": "Breydii",
+      "name": "Breydi",
       "lastName": "Ramos Terrones",
       "dni": 72114109,
       "phone": 923552711,
@@ -21,11 +21,19 @@
       "password": "Xyoyu157"
     },
     {
-      "name": "Mariaa",
-      "lastName": "Flores Aguirres",
-      "dni": "78665645",
-      "phone": "987898090",
-      "email": "maria@bezkoder.com",
+      "name": "Manuel",
+      "lastName": "Ardiles Ugaz",
+      "dni": "76889809",
+      "phone": "987780567",
+      "email": "manuel@bezkoder.com",
+      "id": 3
+    },
+    {
+      "name": "Marko",
+      "lastName": "Ceballos Gutierrez",
+      "dni": "76889900",
+      "phone": "987765567",
+      "email": "marco@bezkoder.com",
       "id": 4
     }
   ]

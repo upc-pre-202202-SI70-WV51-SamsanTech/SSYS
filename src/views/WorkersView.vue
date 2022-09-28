@@ -1,30 +1,36 @@
 <template>
   <div>
+    <h1 class="title">WORKERS</h1>
     <div class="card">
-      <pv-toolbar class="mb-4">
+      <pv-toolbar class="mb-4 toolbar">
         <template #start>
           <!-- Toolbar Section -->
-          <pv-button
-            label="New"
-            icon="pi pi-plus"
-            class="p-button-success mr-2"
-            @click="openNew"
-          />
-          <pv-button
-            label="Delete"
-            icon="pi pi-trash"
-            class="p-button-danger"
-            @click="deleteSelectedTutorials"
-            :disabled="!selectedWorkers || !selectedWorkers.length"
-          />
+
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <pv-input-text
+              v-model="filters['global'].value"
+              placeholder="Search..."
+          /></span>
         </template>
         <template #end>
-          <pv-button
-            label="Export"
-            icon="pi pi-download"
-            class="p-button-help"
-            @click="exportToCSV"
-          />
+          <div
+            class="table-header flex flex-column md:flex-row md:justify-content-between"
+          >
+            <pv-button
+              label="add new worker"
+              icon="pi pi-plus"
+              class="p-button-sm mr-4"
+              @click="openNew"
+            />
+            <pv-button
+              label="Delete"
+              icon="pi pi-trash"
+              class="p-button-danger p-button-sm"
+              @click="deleteSelectedTutorials"
+              :disabled="!selectedWorkers || !selectedWorkers.length"
+            />
+          </div>
         </template>
       </pv-toolbar>
       <!-- Data Table -->
@@ -41,20 +47,8 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} workers"
         responsiveLayout="scroll"
       >
-        <template #header>
-          <div
-            class="table-header flex flex-column md:flex-row md:justify-content-between"
-          >
-            <h5 class="mb-2 md:m-0 p-as-md-center text-xl">Manage Tutorials</h5>
-            <span class="p-input-icon-left">
-              <i class="pi pi-search" />
-              <pv-input-text
-                v-model="filters['global'].value"
-                placeholder="Search..."
-            /></span>
-          </div>
-        </template>
-
+        <template #empty> No workers found. </template>
+        <template #loading> Loading workers data. Please wait. </template>
         <pv-column
           selectionMode="multiple"
           style="width: 3rem"
@@ -210,35 +204,6 @@
         />
       </template>
     </pv-dialog>
-
-    <!-- Delete Selected Tutorials Confirmation Dialog -->
-    <pv-dialog
-      v-model:visible="deleteWorkerDialog"
-      :style="{ width: '450px' }"
-      header="Confirm"
-      :modal="true"
-    >
-      <div class="confirmation-content">
-        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
-        <span v-if="worker">
-          Are you sure you want to delete the selected workers?
-        </span>
-      </div>
-      <template #footer>
-        <pv-button
-          :label="'No'.toUpperCase()"
-          icon="pi pi-times"
-          class="p-button-text"
-          @click="deleteWorkerDialog = false"
-        />
-        <pv-button
-          :label="'Yes'.toUpperCase()"
-          icon="pi pi-check"
-          class="p-button-text"
-          @click="deleteSelectedTutorials"
-        />
-      </template>
-    </pv-dialog>
   </div>
 </template>
 
@@ -363,10 +328,6 @@ export default {
         });
     },
 
-    exportToCSV() {
-      this.$refs.dt.exportToCSV();
-    },
-
     deleteSelectedTutorials() {
       console.log(this.selectedWorkers);
       this.selectedWorkers.forEach((worker) => {
@@ -396,15 +357,20 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 117.4%;
+  color: #ffff;
+}
+
+.toolbar {
+  background: none;
+}
 .table-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.confirmation-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
