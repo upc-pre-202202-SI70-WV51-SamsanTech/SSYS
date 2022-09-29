@@ -36,5 +36,35 @@
       "email": "marco@bezkoder.com",
       "id": 4
     }
+  ],
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "InkaCorp",
+      "ruc": "20147896325",
+      "products": "Papas",
+      "address": "Av. Argentina 215",
+      "phone": "947741102",
+      "email": "inkacorp12@gmail.com"
+  },
+    {
+      "id": 2,
+      "name": "FastFish",
+      "ruc": "20449652779",
+      "products": "Pescados",
+      "address": "Av. Mexico 1067",
+      "phone": "998195201",
+      "email": "fastfish36@yahoo.com"
+    },
+    {
+      "id": 3,
+      "name": "TotalGarlic",
+      "ruc": "20104966730",
+      "products": "Ajos",
+      "address": "Av. Brasil 1482",
+      "phone": "978870046",
+      "email": "totalgarlic351@gmail.com"
+    }
   ]
+
 }

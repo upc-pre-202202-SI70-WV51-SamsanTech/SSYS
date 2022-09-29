@@ -218,7 +218,6 @@ export default {
       workers: [],
       workerDialog: false,
       deleteWorkerDialog: false,
-      deleteWorkerDialog: false,
       worker: {},
       selectedWorkers: null,
       filters: {},
