@@ -34,6 +34,7 @@
   height: 60px;
   background-color: black;
   color: white;
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -62,6 +63,9 @@
 }
 
 .navbar {
+  position: relative;
+  height: 100vh;
+  padding-top: 60px;
   width:100%;
   display: flex;
   flex-direction: row;
@@ -69,7 +73,6 @@
 
 .navbar-links {
   width: 150px;
-  height: 90.7vh;
   padding: 20px;
   background-color: #5E17EB ;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
