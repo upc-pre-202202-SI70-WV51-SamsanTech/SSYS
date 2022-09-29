@@ -117,7 +117,7 @@
                 </div>
   
                 <div class="column2">
-                  <img class="column2_1" src="@/assets/item.png" alt="item" style="width: 12px; height: 17px">
+                  <img class="column2_1" src="./../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
                   <div class="column2_2">Amount</div>
                 </div>
   
