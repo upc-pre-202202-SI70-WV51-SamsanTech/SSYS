@@ -19,7 +19,7 @@
       <RouterLink to="/workers">Workers</RouterLink>
       <RouterLink to="/customers" >Customers</RouterLink>
       <RouterLink to="/suppliers" >Suppliers</RouterLink>
-      <RouterLink to="/" >Products</RouterLink>
+      <RouterLink to="/products" >Products</RouterLink>
     </div>
     <div class="main">
       <router-view/>
