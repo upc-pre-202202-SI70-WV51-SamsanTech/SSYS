@@ -1,18 +1,8 @@
 {
   "workers": [
     {
-      "id": 1,
-      "name": "Breydi",
-      "lastName": "Ramos Terrones",
-      "dni": 72114109,
-      "phone": 923552711,
-      "email": "ogreydi123@gmail.com",
-      "user": "user_01",
-      "password": "Xyoyu157"
-    },
-    {
       "id": 2,
-      "name": "juan",
+      "name": "Juan",
       "lastName": "Ramos Terrones",
       "dni": 72114109,
       "phone": 923552711,
@@ -46,7 +36,7 @@
       "address": "Av. Argentina 215",
       "phone": "947741102",
       "email": "inkacorp12@gmail.com"
-  },
+    },
     {
       "id": 2,
       "name": "FastFish",
@@ -95,5 +85,4 @@
       "address": "Av. Carnaval Moreyra 763"
     }
   ]
-
 }
