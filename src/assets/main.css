@@ -1,17 +1,22 @@
 @import "./base.css";
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+::-webkit-scrollbar {
+  display:none;
+  scroll-behavior: smooth;
+}
 
+body {
+  background: linear-gradient(120deg, #5E17EB, #FF914D);
+}
+
+#app {
   font-weight: normal;
 }
 
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: #ffffff;
   transition: 0.4s;
 }
 
@@ -21,9 +26,10 @@ a,
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 824px) {
   body {
     display: flex;
+    flex-direction: column;
     place-items: center;
   }
 

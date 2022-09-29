@@ -1,28 +1,28 @@
-# Front-End
+# SSYS
 
-This template should help get you started developing with Vue 3 in Vite.
+## The best tool for your business
 
-## Recommended IDE Setup
+SSYS is a service that allows both small and medium-sized companies to manage their inventory. We will serve two target segments. On the one hand, small businesses looking for their first software tool to manage their inventory in an efficient way. On the other hand, microenterprises still using obsolete systems that need one that will keep them ahead of the competition. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Why SSYS?
 
-## Customize configuration
+SSYS is the perfect tool for recording, organizing and verifying the status of your and verify the status of your company's inventory. Applicable for any type of business or enterprise.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Development
 
-## Project Setup
+### Project Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+#### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+#### Compile and Minify for Production
 
 ```sh
 npm run build
