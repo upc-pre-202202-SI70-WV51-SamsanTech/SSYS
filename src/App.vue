@@ -17,7 +17,7 @@
       <RouterLink to="/orders"><p>Orders</p></RouterLink>
       <span>MANAGEMENT</span>
       <RouterLink to="/workers">Workers</RouterLink>
-      <RouterLink to="/" >Customers</RouterLink>
+      <RouterLink to="/customers" >Customers</RouterLink>
       <RouterLink to="/suppliers" >Suppliers</RouterLink>
       <RouterLink to="/" >Products</RouterLink>
     </div>
