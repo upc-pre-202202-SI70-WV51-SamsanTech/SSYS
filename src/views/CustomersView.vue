@@ -20,7 +20,7 @@
             class="table-header flex flex-column md:flex-row md:justify-content-between"
         >
           <pv-button
-              label="add new worker"
+              label="add new customer"
               icon="pi pi-plus"
               class="p-button-sm mr-4"
               @click="openNew"
