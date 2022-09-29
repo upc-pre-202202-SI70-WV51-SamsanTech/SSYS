@@ -46,7 +46,7 @@
       "address": "Av. Argentina 215",
       "phone": "947741102",
       "email": "inkacorp12@gmail.com"
-  },
+    },
     {
       "id": 2,
       "name": "FastFish",
@@ -65,6 +65,63 @@
       "phone": "978870046",
       "email": "totalgarlic351@gmail.com"
     }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "name": "gaseosa pepsi",
+      "category": "bebidas",
+      "state": "Cancelado",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 2,
+      "name": "gaseosa coca cola",
+      "category": "bebidas",
+      "state": "Pendiente",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 3,
+      "name": "gaseosa fanta",
+      "category": "bebidas",
+      "state": "Cancelado",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 4,
+      "name": "gaseosa sprite",
+      "category": "bebidas",
+      "state": "Pendiente",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 5,
+      "name": "gaseosa mirinda",
+      "category": "bebidas",
+      "state": "Pendiente",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 6,
+      "name": "gaseosa seven up",
+      "category": "bebidas",
+      "state": "Cancelado",
+      "details": "1 caja de 12 unidades"
+    },
+    {
+      "id": 7,
+      "name": "Pepsi 500 ml",
+      "category": "bebida",
+      "state": "Cancelado",
+      "details": "1 unidad"
+    },
+    {
+      "id": 8,
+      "name": "asfdsad",
+      "category": "asdfasd",
+      "state": "asdfsa",
+      "details": "asdfa"
+    }
   ]
-
 }

@@ -35,6 +35,7 @@
   background-color: black;
   color: white;
   position: fixed;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
