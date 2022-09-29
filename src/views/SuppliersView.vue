@@ -33,6 +33,20 @@
       <pv-column field="address" header="Address" :sortable="true"></pv-column>
       <pv-column field="phone" header="Phone" :sortable="true"></pv-column>
       <pv-column field="email" header="E-mail" :sortable="true"></pv-column>
+      <pv-column :exportable="false" style="min-width: 8rem">
+        <template #body="slotProps">
+          <pv-button
+              icon="pi pi-pencil"
+              class="p-button-text p-button-rounded"
+              @click="editSupplier(slotProps.data)"
+          />
+          <pv-button
+              icon="pi pi-trash"
+              class="p-button-text p-button-rounded"
+              @click="deleteSupplier(slotProps.data)"
+          />
+        </template>
+      </pv-column>
 
     </pv-data-table>
     <pv-dialog
@@ -222,13 +236,22 @@ export default {
         this.supplier = {};
       }
     },
-    deleteSupplier() {
-      this.suppliersService.delete(this.supplier.id)
+    editSupplier(supplier) {
+      console.log(supplier);
+      this.supplier = { ...supplier };
+      console.log(this.supplier);
+      this.supplierDialog = true;
+    },
+    deleteSupplier(supplier) {
+      this.suppliersService.delete(supplier.id)
           .then((response) =>{
             this.suppliers = this.suppliers.filter((t) => t.id !== this.supplier.id);
-            this.deleteSupplierDialog = false;
-            this.supplier = {};
-          })
+            console.log(response);
+          }).catch((err) => {
+            console.log(
+                "Something went wrong"
+            );
+      });
     },
     exportToCSV() {
       this.$refs.dt.exportToCSV();
