@@ -384,13 +384,11 @@ export default {
   margin-bottom: 1rem;
   color: white;
 }
-
 .table-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .confirmation-content {
   display: flex;
   align-items: center;
