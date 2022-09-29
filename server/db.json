@@ -66,6 +66,35 @@
       "email": "totalgarlic351@gmail.com"
     }
   ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Pedro",
+      "lastName": "Pascal",
+      "dni": "72737398",
+      "email": "PPascal@gmail.com",
+      "phone": "983248142",
+      "address": "Av. Teniente Jimenez 592"
+    },
+    {
+      "id": 2,
+      "name": "Maria",
+      "lastName": "Zepeda",
+      "dni": "10353282",
+      "email": "MZepeda@gmail.com",
+      "phone": "924957391",
+      "address": "Av. Alfonso Ugarte 521"
+    },
+    {
+      "id": 3,
+      "name": "Valentino",
+      "lastName": "Caceres",
+      "dni": "10343409",
+      "email": "VCaceres@gmail.com",
+      "phone": "954253223",
+      "address": "Av. Carnaval Moreyra 763"
+    }
+  ],
   "orders": [
     {
       "id": 1,
