@@ -173,6 +173,10 @@ export default {
     };
   },
   created() {
+    // Sign in redirect
+    this.userData = JSON.parse(localStorage.getItem("userData"))
+    if (!this.userData) this.$router.push({ name: "signIn" })
+
     this.customersService = new CustomersApiService();
     this.customersService
         .getAll()

@@ -1,114 +1,69 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router';
-  import SignIn from "@/security/pages/SignIn.vue";
+import {RouterLink, RouterView} from 'vue-router';
 </script>
 
 <template>
-  <SignIn v-if="!userData"></SignIn>
-  <div v-if="userData">
-  <div class="top-bar">
-    <img src="./assets/img/logo-color.png" alt="logo">
-    <div class="profile">
-      <div id="photo-user"><h1>J</h1></div>
-      <span>John Doe</span>
+
+  <div>
+    <div v-if="userData"
+         class="w-full flex justify-content-between px-4 align-items-center bg-black-alpha-90 fixed z-5">
+      <div class="flex align-items-center">
+        <i @click="setOpen" class="pi pi-bars p-toolbar-separator mx-2 cursor-pointer"/>
+        <img src="./assets/img/logo-color.png" alt="logo" class="w-3rem">
+      </div>
+      <div class="flex align-items-center">
+        <div class="border-circle bg-white w-2rem text-center text-gray-900 mr-2"><h3>JD</h3></div>
+        <span class="hidden md:block">John Doe</span>
+      </div>
+    </div>
+
+    <div class="py-6">
+      <div v-if="userData && open" class="flex flex-column fixed z-1 w-full bg-black-alpha-50 h-screen">
+        <div class="h-screen flex flex-column w-16rem bg-black-alpha-80 row-gap-4 pt-4 pl-4">
+          <span>GENERAL</span>
+          <RouterLink @click="setOpen" to="/" class="mx-4 hover:bg-gray-400">Dashboard</RouterLink>
+          <RouterLink @click="setOpen" to="/orders" class="mx-4 hover:bg-gray-400">Orders</RouterLink>
+          <span>MANAGEMENT</span>
+          <RouterLink @click="setOpen" to="/workers" class="mx-4 hover:bg-gray-400">Workers</RouterLink>
+          <RouterLink @click="setOpen" to="/customers" class="mx-4 hover:bg-gray-400">Customers</RouterLink>
+          <RouterLink @click="setOpen" to="/suppliers" class="mx-4 hover:bg-gray-400">Suppliers</RouterLink>
+          <RouterLink @click="setOpen" to="/products" class="mx-4 hover:bg-gray-400">Products</RouterLink>
+          <p @click="logOut" class="cursor-pointer hover:bg-gray-400 text-white px-2 mr-2">Log out</p>
+        </div>
+      </div>
+
+      <div class="pt-2 px-2">
+        <router-view/>
+      </div>
     </div>
   </div>
-  <div class="navbar">
-    <div class="navbar-links">
-      <span>GENERAL</span>
-      <RouterLink to="/"><p>Dashboard</p></RouterLink>
-      <RouterLink to="/orders"><p>Orders</p></RouterLink>
-      <span>MANAGEMENT</span>
-      <RouterLink to="/workers">Workers</RouterLink>
-      <RouterLink to="/customers" >Customers</RouterLink>
-      <RouterLink to="/suppliers" >Suppliers</RouterLink>
-      <RouterLink to="/products" >Products</RouterLink>
-    </div>
-    <div class="main">
-      <router-view/>
-    </div>
-  </div>
-  </div>
+
 </template>
 
 <script>
-  export default {
-    name: "app.component",
-    data() {
-      return {
-        userData: []
-      }
+export default {
+  name: "app.component",
+  data() {
+    return {
+      userData: [],
+      open: false
+    }
+  },
+  created() {
+    this.userData = JSON.parse(localStorage.getItem("userData"))
+    console.log(this.userData)
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem("userData")
+      window.location.reload()
     },
-    created() {
-      this.userData = JSON.parse(localStorage.getItem("userData"))
-      console.log(this.userData)
-    },
-    methods: {
-
+    setOpen() {
+      this.open = !this.open
     }
   }
+}
 </script>
 
 <style scoped>
-
-.top-bar {
-  width: 100%;
-  height: 60px;
-  background-color: black;
-  color: white;
-  position: fixed;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#photo-user {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border-radius: 50%;
-  margin-right: 10px;
-  color: black;
-}
-
-#photo-user h1 {
-  font-size: 30px;
-  text-align: center;
-  justify-content: center;
-}
-
-.profile {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.navbar {
-  position: relative;
-  height: 100vh;
-  padding-top: 60px;
-  width:100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.navbar-links {
-  width: 150px;
-  padding: 20px;
-  background-color: #5E17EB ;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.main {
-  padding: 30px;
-  width: 100%;
-}
-
-img {
-    width: 70px;
-  }
 </style>
