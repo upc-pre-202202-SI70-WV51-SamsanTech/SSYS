@@ -3,7 +3,7 @@
     <div class="flex flex-column w-22rem mx-auto row-gap-2">
 
       <div class="w-fit mx-auto mb-4">
-        <h1>Sign in</h1>
+        <h1>Sign In</h1>
       </div>
 
       <div class="">
@@ -45,7 +45,6 @@
 <script>
 import {ref} from "vue";
 import {UsersApiService} from "@/security/services/users-api.service";
-import {useRoute} from "vue-router"
 
 export default {
   name: "SignIn",

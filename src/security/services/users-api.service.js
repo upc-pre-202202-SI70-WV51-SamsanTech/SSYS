@@ -5,4 +5,8 @@ export class UsersApiService {
         console.log("GET USERS")
         return httpCommon.get('/users')
     }
+
+    postUser(data) {
+        return httpCommon.post('/users', data)
+    }
 }
