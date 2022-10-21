@@ -174,7 +174,7 @@
 
 <script>
 import { FilterMatchMode } from "primevue/api";
-import { SuppliersApiService } from "@/services/suppliers-api.service";
+import { SuppliersApiService } from "@/purchasing/services/suppliers-api.service";
 
 export default {
   name: "SuppliersView.vue",

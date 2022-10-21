@@ -209,7 +209,7 @@
 
 <script>
 import { FilterMatchMode } from "primevue/api";
-import { WorkersApiService } from "@/services/workers-api.service";
+import { WorkersApiService } from "@/hcm/services/workers-api.service";
 
 export default {
   name: "worker-list.component",

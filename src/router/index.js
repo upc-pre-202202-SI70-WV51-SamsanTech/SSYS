@@ -6,32 +6,32 @@ const router = createRouter({
         {
             path: '/',
             name: 'dashboard',
-            component: () => import('../views/DashboardView.vue')
+            component: () => import('../statistics/pages/DashboardView.vue')
         },
         {
             path: '/orders',
             name: 'orders',
-            component: () => import('../views/OrdersView.vue')
+            component: () => import('../purchasing/pages/OrdersView.vue')
         },
         {
             path: '/workers',
             name: 'workers',
-            component: () => import('../views/WorkersView.vue')
+            component: () => import('../hcm/pages/WorkersView.vue')
         },
         {
             path: '/customers',
             name: 'customers',
-            component: () => import('../views/CustomersView.vue')
+            component: () => import('../sales/pages/CustomersView.vue')
         },
         {
             path: '/suppliers',
             name: 'suppliers',
-            component: () => import('../views/SuppliersView.vue')
+            component: () => import('../purchasing/pages/SuppliersView.vue')
         },
         {
             path: '/products',
             name: 'products',
-            component: () => import('../views/ProductsView.vue')
+            component: () => import('../products/pages/ProductsView.vue')
         }
     ]
 });

@@ -39,14 +39,14 @@
   
             <div class="section3">
               <button @click="numero_pantalla=2">
-                <img src="../assets/img/item.png" alt="iconoojo"
+                <img src="../../assets/img/item.png" alt="iconoojo"
                      style="width: 21px; height: 21px">
                 See all
               </button>
   
-              <img src="../assets/img/edit.jpg">
+              <img src="../../assets/img/edit.jpg">
   
-              <img @click="erase" src="../assets/img/erase.jpg">
+              <img @click="erase" src="../../assets/img/erase.jpg">
   
   
             </div>
@@ -106,28 +106,28 @@
               <div class="colums_5">
                 <div class="column1">
                   <div class="column1_1">
-                    <img src="../assets/img/no_Check.jpg"
+                    <img src="../../assets/img/no_Check.jpg"
                          alt="no check" style="width: 21px; height: 21px">
                   </div>
                   <div class="column1_2">
                     <img class="column1_2_1"
-                         src="../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
+                         src="../../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
                     <div class="column1_2_2">Description</div>
                   </div>
                 </div>
   
                 <div class="column2">
-                  <img class="column2_1" src="./../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
+                  <img class="column2_1" src="../../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
                   <div class="column2_2">Amount</div>
                 </div>
   
                 <div class="column2">
-                  <img src="../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
+                  <img src="../../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
                   <div class="column2_2">Total Cost</div>
                 </div>
   
                 <div class="column2">
-                  <img src="../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
+                  <img src="../../assets/img/item.png" alt="item" style="width: 12px; height: 17px">
                   <div class="column2_2">Registration Date</div>
                 </div>
   
@@ -141,7 +141,7 @@
                 <div class="colums_5 sombra">
                   <div class="column1">
                     <div class="column1_1">
-                      <img src="../assets/img/no_Check.jpg" alt="no check" style="width: 21px; height: 21px">
+                      <img src="../../assets/img/no_Check.jpg" alt="no check" style="width: 21px; height: 21px">
                     </div>
                     <div class="column1_2">
                       <div class="column1_2_2">{{p.description}}</div>
@@ -154,8 +154,8 @@
                   <div class="column2_2">{{p.total_Cost}}</div>
                   <div class="column2_2">{{p.date}}</div>
                   <div >
-                    <img class="column2_1" src="../assets/img/erase.jpg" alt="item" style="width: 12px; height: 17px">
-                    <img src="../assets/img/edit.jpg" alt="item" style="width: 12px; height: 17px">
+                    <img class="column2_1" src="../../assets/img/erase.jpg" alt="item" style="width: 12px; height: 17px">
+                    <img src="../../assets/img/edit.jpg" alt="item" style="width: 12px; height: 17px">
                   </div>
   
                 </div>
