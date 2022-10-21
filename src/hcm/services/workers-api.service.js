@@ -1,4 +1,4 @@
-import http from './http-common';
+import http from '../../shared/services/http-common';
 
 export class WorkersApiService {
     getAll() {
