@@ -1,4 +1,19 @@
 {
+  "users": [
+    {
+      "user_id": 1,
+      "username": "XxProFEtxX",
+      "password": "Xyoyu157",
+      "person": {
+        "person_id": 1,
+        "name": "Breydi",
+        "lastName": "Ramos Terrones",
+        "email": "ogreydi123@gmail.com",
+        "phone": 923553711,
+        "address": "Cabo blanco con tres Marias #4431"
+      }
+    }
+  ],
   "workers": [
     {
       "id": 1,

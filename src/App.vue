@@ -1,8 +1,11 @@
 <script setup>
   import { RouterLink, RouterView } from 'vue-router';
+  import SignIn from "@/security/pages/SignIn.vue";
 </script>
 
 <template>
+  <SignIn v-if="!userData"></SignIn>
+  <div v-if="userData">
   <div class="top-bar">
     <img src="./assets/img/logo-color.png" alt="logo">
     <div class="profile">
@@ -25,7 +28,26 @@
       <router-view/>
     </div>
   </div>
+  </div>
 </template>
+
+<script>
+  export default {
+    name: "app.component",
+    data() {
+      return {
+        userData: []
+      }
+    },
+    created() {
+      this.userData = JSON.parse(localStorage.getItem("userData"))
+      console.log(this.userData)
+    },
+    methods: {
+
+    }
+  }
+</script>
 
 <style scoped>
 
