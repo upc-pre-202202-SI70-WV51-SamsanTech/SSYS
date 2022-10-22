@@ -34,6 +34,11 @@ import Toast from "primevue/toast";
 import Dropdown from "primevue/dropdown";
 import Card from "primevue/card";
 import Tag from "primevue/tag";
+import Password from 'primevue/password';
+import Message from 'primevue/message';
+import InlineMessage from "primevue/inlinemessage";
+
+// ROUTES
 import router from "./router";
 
 createApp(App)
@@ -49,6 +54,9 @@ createApp(App)
     .component('pv-button', Button)
     .component('pv-row', Row)
     .component('pv-sidebar', Sidebar)
+    .component('pv-inline-message', InlineMessage)
+    .component('pv-message', Message)
+    .component('pv-password', Password)
     .component('pv-menu', Menu)
     .component('pv-dialog', Dialog)
     .component('pv-toast', Toast)

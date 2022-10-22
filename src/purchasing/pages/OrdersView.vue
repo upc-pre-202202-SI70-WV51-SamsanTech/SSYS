@@ -48,7 +48,7 @@
           >
             <h5 class="mb-2 md:m-0 p-as-md-center text-xl">Purchases List</h5>
             <span class="p-input-icon-left">
-              <i class="pi pi-search" />
+              <i class="pi pi-search"/>
               <pv-input-text
                   v-model="filters['global'].value"
                   placeholder="Search..."
@@ -197,7 +197,7 @@
         :modal="true"
     >
       <div class="confirmation-content">
-        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"/>
         <span v-if="order">
           Are you sure you want to delete the selected workers?
         </span>
@@ -221,8 +221,8 @@
 </template>
 
 <script>
-import { FilterMatchMode } from "primevue/api";
-import { OrdersApiService } from "../services/orders-api.service";
+import {FilterMatchMode} from "primevue/api";
+import {OrdersApiService} from "../services/orders-api.service";
 
 export default {
   name: "order-list.component",
@@ -236,13 +236,17 @@ export default {
       filters: {},
       submitted: false,
       statuses: [
-        { label: "Published", value: "published" },
-        { label: "Unpublished", value: "unpublished" },
+        {label: "Published", value: "published"},
+        {label: "Unpublished", value: "unpublished"},
       ],
       ordersService: null,
     };
   },
   created() {
+    // Sign in redirect
+    this.userData = JSON.parse(localStorage.getItem("userData"))
+    if (!this.userData) this.$router.push({ name: "signIn" })
+
     this.ordersService = new OrdersApiService();
     this.ordersService
         .getAll()
@@ -319,7 +323,7 @@ export default {
 
     editOrder(orders) {
       console.log(orders);
-      this.order = { ...orders };
+      this.order = {...orders};
       console.log(this.order);
       this.orderDialog = true;
     },
@@ -365,7 +369,7 @@ export default {
 
     initFilters() {
       this.filters = {
-        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        global: {value: null, matchMode: FilterMatchMode.CONTAINS},
       };
     },
   },
@@ -378,17 +382,20 @@ export default {
   margin: 0;
   height: 100vh;
 }
+
 #title-orders {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: white;
 }
+
 .table-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .confirmation-content {
   display: flex;
   align-items: center;

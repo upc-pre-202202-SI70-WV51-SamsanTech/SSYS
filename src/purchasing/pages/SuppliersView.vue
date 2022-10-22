@@ -194,6 +194,10 @@ export default {
     };
   },
   created() {
+    // Sign in redirect
+    this.userData = JSON.parse(localStorage.getItem("userData"))
+    if (!this.userData) this.$router.push({ name: "signIn" })
+
     this.suppliersService = new SuppliersApiService();
     this.suppliersService.getAll().then((response) => {
       this.suppliers = response.data;
