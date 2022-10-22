@@ -2,11 +2,8 @@
   <div>
     <h1>Customers</h1>
 
-    <!-- TOOL BAR -->
-
     <pv-toolbar class="mb-4 toolbar">
       <template #start>
-        <!-- Toolbar Section -->
 
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
@@ -28,8 +25,6 @@
         </div>
       </template>
     </pv-toolbar>
-
-    <!-- DATA TABLE -->
 
     <pv-data-table :value="customers"
                    :paginator="true" :rows="5"
@@ -65,7 +60,6 @@
 
     </pv-data-table>
 
-    <!-- New/Edit Dialog -->
     <pv-dialog
         v-model:visible="customerDialog"
         :style="{width: '450px'}"
@@ -173,7 +167,6 @@ export default {
     };
   },
   created() {
-    // Sign in redirect
     this.userData = JSON.parse(localStorage.getItem("userData"))
     if (!this.userData) this.$router.push({ name: "signIn" })
 
