@@ -12,6 +12,19 @@
         "phone": 923553711,
         "address": "Cabo blanco con tres Marias #4431"
       }
+    },
+    {
+      "username": "jerry",
+      "password": "Jerry01234",
+      "person": {
+        "id": 252,
+        "name": "jerry",
+        "lastName": "jerry",
+        "email": "u20201c043@upc.edu.pe",
+        "phone": "999999999",
+        "address": "aaaa"
+      },
+      "id": 2
     }
   ],
   "workers": [
@@ -166,6 +179,76 @@
       "category": "asdfasd",
       "state": "asdfsa",
       "details": "asdfa"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "description": "segundo",
+      "amount": 2,
+      "price_all": 2,
+      "category": 1,
+      "fecha_creacion": "2022-10-22T05:30:27.552Z"
+    },
+    {
+      "id": 2,
+      "description": "tercero",
+      "amount": 3,
+      "price_all": 3,
+      "category": 1,
+      "fecha_creacion": "2022-10-22T05:30:38.470Z"
+    },
+    {
+      "id": 3,
+      "description": "sal",
+      "amount": 10,
+      "price_all": 100,
+      "category": 2,
+      "fecha_creacion": "2022-10-22T08:26:54.769Z"
+    },
+    {
+      "id": 4,
+      "description": "azucar",
+      "amount": 20,
+      "price_all": 2300,
+      "category": 2,
+      "fecha_creacion": "2022-10-22T08:27:14.081Z"
+    },
+    {
+      "id": 6,
+      "description": "oreo",
+      "amount": 10,
+      "price_all": 200,
+      "category": 3,
+      "fecha_creacion": "2022-10-22T08:27:55.937Z"
+    },
+    {
+      "id": 7,
+      "description": "chips",
+      "amount": 10,
+      "price_all": 140,
+      "category": 3,
+      "fecha_creacion": "2022-10-22T08:28:15.448Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "cereales",
+      "description": "Aqui se guarda la lista de cereale",
+      "fecha_creacion": "20/10/2022"
+    },
+    {
+      "id": 2,
+      "name": "tercera categoria",
+      "description": "ehjhjdjjks",
+      "fecha_creacion": "2022-10-22T08:26:20.921Z"
+    },
+    {
+      "id": 3,
+      "name": "galletas",
+      "description": "jhsdhjshj",
+      "fecha_creacion": "2022-10-22T08:26:32.751Z"
     }
   ]
 }
