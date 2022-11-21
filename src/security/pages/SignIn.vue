@@ -76,14 +76,17 @@ export default {
           username: this.username,
           password: this.password,
         };
+        console.log(user);
         await this.usersService
           .signIn(user)
           .then((res) => {
+            console.log('RESPONSE', res);
             localStorage.setItem("userData", JSON.stringify(res.data));
             localStorage.setItem("token", JSON.stringify(res.data.token));
             window.location.reload();
           })
           .catch((err) => {
+            console.log('RESPONSE', err.response.data);
             this.error = err.response.data.message;
           });
       }
