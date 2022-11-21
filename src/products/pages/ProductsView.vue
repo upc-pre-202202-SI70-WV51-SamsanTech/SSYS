@@ -4,17 +4,19 @@
     <transition>
 <div v-if="numero_pantalla===0">
   <div class="contenedor_Categories">
-    <div class="titulo">
+    <div class="titulo_c">
       <h1>Categories</h1>
     </div>
-    <button class="cursor btn_new centrar_r var_width" @click="numero_pantalla=1">Add Category</button>
+    <div class="contend_add_category"> 
+      <button class="add_category" @click="numero_pantalla=1">Add Category</button>
+    </div>
     <div class="bloques">
       <div v-for="(category,c_index) in array_category" v-bind:key="c_index">
         <!--inicio for-->
         <div class="target">
 
           <div class="section1">
-            <div class="titulo">{{category.name}}</div>
+            <div class="titulo_target">{{category.name}}</div>
           </div>
 
           <div class="section2">
@@ -28,15 +30,12 @@
           </div>
 
           <div class="section3">
-            <button class="cursor" @click="numero_pantalla=2, indice_category=category.id">
-              <img src="../../../src/assets/img/item.png" alt="iconoojo" style="width: 21px; height: 21px">
+            <button class="cursor btn_target" @click="numero_pantalla=2, indice_category=category.id">
               See all
             </button>
-
-           
-
-            <img class="cursor" @click="deleteCategory(category.id)" src="../../../src/assets/img/erase.jpg">
-
+            <button class="cursor btn_target_delete" @click="deleteCategory(category.id)">
+              Erase category
+            </button>
 
           </div>
 
@@ -84,77 +83,74 @@
 </div>
 <div v-else-if="numero_pantalla===2">
   <div class="tabla">
-    <div class="titulo"> <h1>Category: {{array_category[indice_category-1].name}} {{indice_category}}</h1> </div>
+    <p class="titulo_c_tabla">
+      
+      Name Category: 
+      <span>{{array_category[indice_category-1].name}}</span>
+      <hr>
+      
+    </p>
+    <p class="titulo_c_tabla">
+      
+      Description Category: 
+      <span>{{array_category[indice_category-1].description}}</span>
+      <hr>
+      
+    </p>
     <!-- buscando -->
     <div class="column_2">
-      <button class="cursor btn_new centrar_r" @click="numero_pantalla=0">Return</button>
-      <button class="cursor btn_new centrar_l" @click="numero_pantalla=3">Add product</button>
-    </div>
-    
-    <div class="table centrar_h">
 
-      <div class="colums_5">
-        <div class="column1">
-          <div class="column1_1">
-            <img src="../../../src/assets/img/no_Check.jpg" alt="no check" style="width: 21px; height: 21px">
-          </div>
-          <div class="column1_2 add_height">
-            <img class="column1_2_1" src="../../../src/assets/img/item.png" alt="item" style="width: 12px; height: 17px">
-            <div class="column1_2_2">Description</div>
-          </div>
+      <div class="contend_add_category centrar_r centrar_r_">
+        <div class="cursor add_category " @click="numero_pantalla=0">
+        Return
         </div>
-
-        <div class="column2">
-          <img class="column2_1" src="../../../src/assets/img/item.png" alt="item" style="width: 12px; height: 17px">
-          <div class="column2_2">Amount</div>
-        </div>
-
-        <div class="column2">
-          <img src="../../../src/assets/img/item.png" alt="item" style="width: 12px; height: 17px">
-          <div class="column2_2">Total Cost</div>
-        </div>
-
-        <div class="column2">
-          <img src="../../../src/assets/img/item.png" alt="item" style="width: 12px; height: 17px">
-          <div class="column2_2">Registration Date</div>
-        </div>
-
-        <div>Options</div>
-
       </div>
 
-      <hr>
+      <div class="contend_add_product centrar_l_2 centrar_l_">
+        <h1 class="cursor add_product " @click="numero_pantalla=3">
+        Add product
+        </h1>
+      </div>
+      
+      
+    </div>
+    
+
+    <button class="title_barra negro">
+        <div>Description</div>
+        <div>Amount</div>
+        <div>Total Cost</div>
+        <div>Registration Date</div>
+        <div>Erase</div>
+      </button>
 
       <div v-for="(p, indice) in array_products" v-bind:key="indice">
         <div v-if="p.category==indice_category">
-
-          <div class="colums_5 sombra add_height_2">
-            <div class="column1">
-              <div class="column1_1 centrar_v">
-                <img src="../../../src/assets/img/no_Check.jpg" alt="no check" style="width: 21px; height: 21px">
-              </div>
-              <div class="column1_2 centrar_v">
-                <div class="column1_2_2">{{p.description}}</div>
-              </div>
-
-            </div>
-
-            <div class="column2_2 centrar_v">{{p.amount}}</div>
-
-            <div class="column2_2 centrar_v">{{p.price_all}}</div>
-            <div class="column2_2 centrar_v">{{p.fecha_creacion}}</div>
-            <div class="centrar_v">
-              <img @click="delete_product(p.id)" class="column2_1 cursor" src="../../../src/assets/img/erase.jpg" alt="item" style="width: 12px; height: 17px">
-              
-            </div>
-
+          <div v-if="indice%2==0">
+            <button class="title_barra_contenido claro">
+              <div>{{p.description}}</div>
+              <div>{{p.amount}}</div>
+              <div>{{p.price_all}}</div>
+              <div>{{p.fecha_creacion}}</div>
+              <button class="cursor btn_target_delete" @click="delete_product(p.id)">
+                Delete product
+              </button>
+            </button>
           </div>
-          <hr>
-
-
+          <div v-else>
+            <button class="title_barra_contenido oscuro">
+              <div>{{p.description}}</div>
+              <div>{{p.amount}}</div>
+              <div>{{p.price_all}}</div>
+              <div>{{p.fecha_creacion}}</div>
+              <button class="cursor btn_target_delete" @click="delete_product(p.id)">
+                Delete product
+              </button>
+            </button>
+          </div>
+          
         </div>
       </div>
-    </div>
   </div>
 </div>
 <div v-else-if="numero_pantalla===3">
@@ -456,7 +452,33 @@ export default {
   font-size: 19px;
   margin-bottom: 2rem;
   padding-top: 2rem;
-  /* background-color: #FF914D; */
+  margin-left: 5%;
+}
+
+
+.titulo_c{
+  font-family: "Segoe UI Semibold";
+  font-size: 29px;
+  margin-bottom: 5px;
+  padding-top: 2rem;
+  margin-left: 10%;
+  color: white;
+}
+.titulo_c_tabla{
+  font-family: "Segoe UI Semibold";
+  font-weight:lighter;
+  font-size: 30px;
+  margin-bottom: 5px;
+  padding-top: 2rem;
+  margin-left: 10%;
+  color: white;
+}
+.titulo_c span{
+  font-size: 29px;
+}
+.titulo_c_tabla span{
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .cursor{
@@ -471,6 +493,47 @@ export default {
   text-decoration: none;
 }
 
+.contend_add_category{
+  width: auto;
+  text-align: right;
+}
+.contend_add_product{
+  width: auto;
+}
+
+.width{
+  width: 100%;
+}
+
+.add_category{
+  width: auto;
+  background-color: #3F51B5;
+  border-color: transparent;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  margin-right: 5%;
+}
+.add_product{
+  width: auto;
+  background-color: #3F51B5;
+  border-color: transparent;
+  color: white;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  margin-bottom: 2rem;
+  
+}
+
+
+.add_category:hover, .add_product:hover{
+  background-color: #4a5cc3;
+}
+button.add_category{
+  height: auto;
+  width: auto;
+}
 
 
 .contenido{
@@ -646,20 +709,33 @@ a{
 //TARGET*/
 
 .target{
-  background-color: white;
+  background-color: rgb(235, 235, 235);
   width: 257px;
-  height: 300px;
+  height: auto;
   border-radius: 5px;
-  margin:10px;
+  margin: auto;
+  margin-bottom: 2rem;
   padding: 1rem;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.2);
+  
+}
+.target:hover{
+  background-color: white;
 }
 
 .section1{
   text-align: center;
   font-family: "Segoe UI Semibold";
+  margin-bottom: 1.5rem;
 }
 
-.section1 .titulo{
+.titulo_target{
+  font-family: "Segoe UI Semibold";
+  font-size: 19px;
+  margin-bottom: 2rem;
+}
+
+.section1 .titulo_target{
   font-size: 23px;
   font-family: "Segoe UI Semibold";
   margin-bottom: 1rem;
@@ -673,28 +749,99 @@ a{
 
 .section3{
   text-align: right;
-  margin-top: 1.3rem;
-  margin-right: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
   font-family: "Segoe UI Semibold";
+  /* background-color: #FF914D; */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
-.section3 img{
-  margin-right: 0.4rem;
-  margin-left: 0.4rem;
-
+.btn_target{
+  background-color: #3F51B5;
+  border-color: transparent;
+  color: white;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: 5px;
+  margin-right: 5%;
 }
-
+.btn_target:hover{
+  background-color: #5d6ecf;
+}
+.btn_target_delete{
+  background-color: #dd2424;
+  border-color: transparent;
+  color: white;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: 5px;
+  margin-right: 5%;
+}
+.btn_target_delete:hover{
+  background-color: #f45353;
+}
 
 .bloques{
   display: grid;
   grid-template-columns: repeat(4,1fr);
-  width: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .column_2{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: auto;
+  text-align: right;
+  margin-top: 2rem;
 }
+
+.title_barra, .title_barra_contenido{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: transparent;
+  border-color:#000000;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-weight: 700;
+  padding: 1rem;
+  text-align: center;
+}
+.title_barra_contenido{
+  border-width: 2px;
+  font-size: 20px;
+  margin-top: 0.5rem;
+}
+.title_barra{
+  border-width: 3px;
+  font-size: 25px;
+  margin-bottom: 1rem;
+}
+
+.title_barra div, .title_barra_contenido div{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.negro{
+  background-color: #000000;
+  
+}
+.claro{
+  background-color: #fefefe4d;
+}
+
+.oscuro{
+  background-color: #00000028;
+  border-color: white;
+}
+
 
 .btn_new{
   width: 30%;
@@ -708,12 +855,22 @@ a{
   background-color: #000000;
   color: white;
 }
-
+.centrar_r_{
+  width: auto;
+  margin-left: 10%;
+}
+.centrar_l_{
+  margin-right: 10%;
+}
 .centrar_r{
   margin-right:auto;
 }
 .centrar_l{
   margin-left: auto;
+}
+.centrar_l_2{
+  margin-left: auto;
+  text-align: center;
 }
 
 .add_height{
@@ -736,5 +893,23 @@ a{
 .var_width{
   width: 15%;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .bloques{
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+@media (max-width: 920px) {
+  .bloques{
+    grid-template-columns: repeat(2,1fr);
+    width: 95%;
+  }
+}
+@media (max-width: 600px) {
+  .bloques{
+    grid-template-columns: repeat(1,1fr);
+    width: 95%;
+  }
 }
 </style>
